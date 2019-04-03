@@ -5,5 +5,9 @@
   "main": "index.ts",
   "author": "TychoTa",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@nestjs/common": "^6.0.5",
+    "@nestjs/microservices": "^6.0.5"
+  }
 }

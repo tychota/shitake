@@ -1,0 +1,14 @@
+
+syntax = "proto3";
+
+package user;
+
+service Query {
+  rpc Hello(GreetingObject) returns (Greeting) {}
+}
+
+message GreetingObject { string object = 1; }
+
+message Greeting {
+  string greeting = 1;
+}
