@@ -1,0 +1,9 @@
+{
+  "name": "@shitake/microservice-user",
+  "version": "1.0.0",
+  "description": "cqrs test",
+  "main": "index.ts",
+  "author": "TychoTa",
+  "license": "MIT",
+  "private": true
+}
