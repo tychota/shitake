@@ -7,7 +7,10 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@grpc/proto-loader": "^0.4.0"
+    "@grpc/proto-loader": "^0.4.0",
+    "@types/pino-http": "^4.0.2",
+    "pino-http": "^4.1.0",
+    "pino-pretty": "^2.6.0"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.5",
