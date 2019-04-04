@@ -7,9 +7,12 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
     "@types/webpack": "^4.4.27",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
+    "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^5.0.2",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
