@@ -3,10 +3,10 @@ import { UserModule } from '@shitake/microservice-user/user.module';
 
 import { ApplicationController } from './controller';
 
-import pino from 'pino-http';
+import { EventstoreModule } from '../eventstore/eventstore.module';
 
 @Module({
-  imports: [UserModule],
+  imports: [UserModule, EventstoreModule],
   controllers: [ApplicationController],
 })
 export class ApplicationModule implements NestModule {
