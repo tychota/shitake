@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Controller, Get, OnModuleInit, Post, Param, Body } from '@nestjs/common';
 import { ClientGrpc, Client } from '@nestjs/microservices';
 
-import { userClientOptions } from '@shitake/microservice-user/infrastructure/api/client';
+import { userClientOptions } from '@shitake/microservice-user/infrastructure/api/user.client';
 import { UserDto } from '@shitake/microservice-user/domain/user.dto';
 
 interface UserQuery {

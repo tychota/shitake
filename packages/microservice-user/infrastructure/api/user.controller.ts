@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { UserService } from '../../business/service';
+import { UserService } from '../../business/user.service';
 import { UserDto } from '../../domain/user.dto';
 
 @Controller()

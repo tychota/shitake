@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { ApplicationModule } from './module';
-import { userClientOptions } from '@shitake/microservice-user/infrastructure/api/client';
+import { userClientOptions } from '@shitake/microservice-user/infrastructure/api/user.client';
 
 declare const module: any;
 

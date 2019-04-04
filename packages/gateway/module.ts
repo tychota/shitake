@@ -1,5 +1,5 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { UserModule } from '@shitake/microservice-user/module';
+import { UserModule } from '@shitake/microservice-user/user.module';
 
 import { ApplicationController } from './controller';
 
