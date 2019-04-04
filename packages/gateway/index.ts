@@ -6,8 +6,10 @@ declare const module: any;
 
 export async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule);
+
   app.connectMicroservice(userClientOptions);
   await app.startAllMicroservicesAsync();
+
   await app.listen(3001);
 
   if (module.hot) {

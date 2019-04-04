@@ -8,6 +8,11 @@
   "private": true,
   "dependencies": {
     "@nestjs/common": "^6.0.5",
-    "@nestjs/microservices": "^6.0.5"
+    "@nestjs/cqrs": "^6.0.0",
+    "@nestjs/microservices": "^6.0.5",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^3.4.4"
   }
 }
