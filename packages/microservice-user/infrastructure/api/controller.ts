@@ -1,6 +1,5 @@
-import { Controller, Get, OnModuleInit } from '@nestjs/common';
-import { Client, ClientGrpc, GrpcMethod } from '@nestjs/microservices';
-import { Observable } from 'rxjs';
+import { Controller } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
 
 @Controller()
 export class UserController {
