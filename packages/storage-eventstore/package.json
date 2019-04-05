@@ -1,5 +1,5 @@
 {
-  "name": "@shitake/eventstore",
+  "name": "@shitake/storage-eventstore",
   "version": "1.0.0",
   "description": "cqrs test",
   "main": "index.ts",

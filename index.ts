@@ -1,3 +1,3 @@
-import { bootstrap } from '@shitake/gateway';
+import { bootstrap } from '@shitake/api-gateway';
 
 bootstrap();

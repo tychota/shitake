@@ -1,5 +1,5 @@
 {
-  "name": "@shitake/gateway",
+  "name": "@shitake/api-gateway",
   "version": "1.0.0",
   "description": "cqrs test",
   "main": "index.ts",
