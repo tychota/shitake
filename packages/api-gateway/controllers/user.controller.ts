@@ -14,8 +14,8 @@ interface UserCommand {
   createUser(dto: UserDto): Observable<void>;
 }
 
-@Controller()
-export class ApplicationController implements OnModuleInit {
+@Controller('user')
+export class UserGatewayController implements OnModuleInit {
   @Client(userClientOptions)
   private readonly userClient!: ClientGrpc;
 
@@ -25,11 +25,6 @@ export class ApplicationController implements OnModuleInit {
   onModuleInit() {
     this.userQuery = this.userClient.getService<UserQuery>('Query');
     this.userCommand = this.userClient.getService<UserCommand>('Command');
-  }
-
-  @Get()
-  hello(): Promise<{ greetings: string }> {
-    return this.userQuery.hello({ object: 'world' }).toPromise();
   }
 
   @Post()
