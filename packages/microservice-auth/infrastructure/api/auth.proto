@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth;
 
-service Query {}
+// service Query {}
 
 service Command {
   rpc Register(AuthCredentialsDto) returns (AccountRef) {}

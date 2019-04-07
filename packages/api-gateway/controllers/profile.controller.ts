@@ -19,11 +19,9 @@ export class ProfileGatewayController implements OnModuleInit {
   @Client(profileClientOptions)
   private readonly profileClient!: ClientGrpc;
 
-  private profileQuery!: ProfileQuery;
   private profileCommand!: ProfileCommand;
 
   onModuleInit() {
-    this.profileQuery = this.profileClient.getService<ProfileQuery>('Query');
     this.profileCommand = this.profileClient.getService<ProfileCommand>('Command');
   }
 

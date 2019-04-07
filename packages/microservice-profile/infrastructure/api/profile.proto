@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package profile;
 
-service Query {}
+// service Query {}
 
 service Command {
   rpc CreateProfile(UserDto) returns (Empty) {}
