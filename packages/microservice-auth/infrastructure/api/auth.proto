@@ -8,6 +8,7 @@ import "google/protobuf/any.proto";
 
 service Command {
   rpc Register(AuthCredentialsDto) returns (AccountRef) {}
+  rpc Login(AuthCredentialsDto) returns (TokensRef) {}
 }
 
 message AuthCredentialsDto {
@@ -23,6 +24,21 @@ message AccountRef {
   }
   message Data {
     string id = 1;
+  }
+  Status status = 1;
+  Data data = 2;
+}
+
+message TokensRef {
+  message Status {
+    int32 code = 1;
+    string message = 2;
+    repeated google.protobuf.Any details =3;
+  }
+  message Data {
+    string id = 1;
+    string authToken = 2;
+    string refreshToken = 3;
   }
   Status status = 1;
   Data data = 2;

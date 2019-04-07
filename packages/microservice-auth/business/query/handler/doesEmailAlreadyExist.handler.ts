@@ -6,7 +6,7 @@ import { AccountEntity } from '@shitake/microservice-auth/infrastructure';
 import { DoesEmailExistQuery } from '@shitake/microservice-auth/business/query';
 
 @QueryHandler(DoesEmailExistQuery)
-export class GetHeroesHandler implements IQueryHandler<DoesEmailExistQuery> {
+export class DoesEmailExistHandler implements IQueryHandler<DoesEmailExistQuery> {
   constructor(
     @InjectEntityManager('accountConnection')
     private readonly entityManager: EntityManager,

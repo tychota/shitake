@@ -22,6 +22,7 @@ export async function bootstrap() {
     .setTitle('Shitake')
     .setDescription('A CRQS Test')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

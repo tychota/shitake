@@ -1,3 +1,4 @@
-import { RegisterAccountHandler } from './registerHandler.handler';
+import { RegisterAccountHandler } from './registerAccount.handler';
+import { LoginCommandHandler } from './login.handler';
 
-export const AuthCommandHandlers = [RegisterAccountHandler];
+export const AuthCommandHandlers = [RegisterAccountHandler, LoginCommandHandler];

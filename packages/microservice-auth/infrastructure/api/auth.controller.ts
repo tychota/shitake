@@ -11,9 +11,14 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @GrpcMethod('Command')
-  @UsePipes(new ValidationPipe({ transform: true }))
   async register(authCredentialsDto: AuthClearTextCredentialsDto) {
     const serviceFn = this.authService.register.bind(this.authService);
+    return formatGrpcResponse(serviceFn, [authCredentialsDto]);
+  }
+
+  @GrpcMethod('Command')
+  async login(authCredentialsDto: AuthClearTextCredentialsDto) {
+    const serviceFn = this.authService.login.bind(this.authService);
     return formatGrpcResponse(serviceFn, [authCredentialsDto]);
   }
 }

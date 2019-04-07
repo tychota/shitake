@@ -9,6 +9,7 @@ import { AuthEventHandlers } from './domain/event/handler';
 import { AuthSagas } from './business/sagas/updateQuery.saga';
 import { AuthQueryHandlers } from './business/query/handler';
 import { AccountEntity } from './infrastructure/persistance/entity/account.entity';
+import { RefreshTokenEntity } from './infrastructure/persistance/entity/refreshToken.entity';
 
 import { EventstoreService } from '@shitake/storage-eventstore/eventstore.service';
 import { TypeormLogger } from '@shitake/utils-logger/typeorm.logger';
@@ -20,7 +21,7 @@ import { TypeormLogger } from '@shitake/utils-logger/typeorm.logger';
       name: 'accountConnection',
       type: 'postgres',
       url: 'postgres://shitake:password@localhost/accounts',
-      entities: [AccountEntity],
+      entities: [AccountEntity, RefreshTokenEntity],
       synchronize: true,
       logging: true,
       logger: new TypeormLogger(),

@@ -19,6 +19,7 @@ interface ProfileCommand {
 }
 
 @ApiUseTags('profile')
+@ApiBearerAuth()
 @Controller('profile')
 export class ProfileGatewayController implements OnModuleInit {
   @Client(profileClientOptions)

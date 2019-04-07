@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import { AuthClearTextCredentialsDto } from '@shitake/microservice-auth/domain/dto';
-import { RegisterAccountCommand } from '@shitake/microservice-auth/business/command';
-import { DoesEmailExistQuery } from '@shitake/microservice-auth/business/query/';
+import { RegisterAccountCommand, LoginCommand } from '@shitake/microservice-auth/business/command';
+import { DoesEmailExistQuery, GetUserIdAfterValidationQuery } from '@shitake/microservice-auth/business/query/';
 
 import { GrpcAlreadyExistException } from '@shitake/utils-grpc/exception';
 
@@ -15,6 +15,14 @@ export class AuthService {
     await this.assertEmailDoesNotExist(authCredentialsDto.email);
     const id = await this.commandBus.execute(new RegisterAccountCommand(authCredentialsDto));
     return { id };
+  }
+
+  async login(authCredentialsDto: AuthClearTextCredentialsDto) {
+    const id = await this.queryBus.execute<GetUserIdAfterValidationQuery, string>(
+      new GetUserIdAfterValidationQuery(authCredentialsDto),
+    );
+    const { authToken, refreshToken } = await this.commandBus.execute(new LoginCommand(id));
+    return { authToken, refreshToken, id };
   }
 
   async assertEmailDoesNotExist(email: string) {

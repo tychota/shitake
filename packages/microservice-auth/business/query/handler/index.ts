@@ -1,3 +1,4 @@
-import { GetHeroesHandler } from './doesEmailAlreadyExist.handler';
+import { DoesEmailExistHandler } from './doesEmailAlreadyExist.handler';
+import { GetUserIdAfterValidationHandler } from './getUserIdAfterValidation.handler';
 
-export const AuthQueryHandlers = [GetHeroesHandler];
+export const AuthQueryHandlers = [DoesEmailExistHandler, GetUserIdAfterValidationHandler];

@@ -6,8 +6,9 @@ import { EntityManager } from 'typeorm';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AccountRegistredEvent } from '@shitake/microservice-auth/domain/event';
+import { AccountRegistredEvent, LoggedInEvent } from '@shitake/microservice-auth/domain/event';
 import { AccountEntity } from '@shitake/microservice-auth/infrastructure';
+import { RefreshTokenEntity } from '../../infrastructure/persistance/entity/refreshToken.entity';
 
 @Injectable()
 export class AuthSagas {
@@ -23,6 +24,17 @@ export class AuthSagas {
       map(event => {
         const accountRepo = this.entityManager.getRepository(AccountEntity);
         accountRepo.save({ id: event.uuid, email: event.data.email, hashedPassword: event.data.hashedPassword });
+      }),
+    );
+  };
+
+  @Saga()
+  loggedIn = (events$: Observable<any>): Observable<void> => {
+    return events$.pipe(
+      ofType(LoggedInEvent),
+      map(event => {
+        const refreshTokenRepo = this.entityManager.getRepository(RefreshTokenEntity);
+        refreshTokenRepo.save({ id: event.uuid, refreshToken: event.refreshToken });
       }),
     );
   };
