@@ -3,7 +3,7 @@ import { UserModule } from '@shitake/microservice-user/user.module';
 
 import { ApplicationController } from './controller';
 
-import { EventstoreModule } from '../eventstore/eventstore.module';
+import { EventstoreModule } from '@shitake/storage-eventstore/eventstore.module';
 
 @Module({
   imports: [UserModule, EventstoreModule],

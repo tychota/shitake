@@ -1,7 +1,7 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 
 import { UserCreatedEvent } from '../interface/userCreated.event';
-import { EventstoreService } from '@shitake/eventstore/eventstore.service';
+import { EventstoreService } from '@shitake/storage-eventstore/eventstore.service';
 
 @EventsHandler(UserCreatedEvent)
 export class UserCreatedHandler implements IEventHandler<UserCreatedEvent> {

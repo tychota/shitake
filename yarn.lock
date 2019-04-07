@@ -767,7 +767,7 @@
   dependencies:
     "@types/pino" "*"
 
-"@types/pino@*":
+"@types/pino@*", "@types/pino@^5.8.6":
   version "5.8.6"
   resolved "https://registry.yarnpkg.com/@types/pino/-/pino-5.8.6.tgz#b356ac7bb607d9c489821752b47475bbcfd698b9"
   integrity sha512-3hKjgaAXi8FALboVw1LC+3wiQN+bLZ/byzVgRI65XZxdVLSgjIl3kMVh2etKEdQ96qUgMd6bhNtzrUwh1e1x9g==
@@ -4281,6 +4281,18 @@ pino@^5.0.0:
   version "5.12.0"
   resolved "https://registry.yarnpkg.com/pino/-/pino-5.12.0.tgz#1630c05000a4cd9a6e0ecf43f5bea0edfb213d69"
   integrity sha512-tXlxRVUuYrsS8jfmki3lennOcibfmGnloitY8Zn1HUMNNtOCiYH8ctQFdK+cg/7QmE2vEnfMNAIK8H3/hPBUQw==
+  dependencies:
+    fast-redact "^1.4.4"
+    fast-safe-stringify "^2.0.6"
+    flatstr "^1.0.9"
+    pino-std-serializers "^2.3.0"
+    quick-format-unescaped "^3.0.2"
+    sonic-boom "^0.7.3"
+
+pino@^5.12.2:
+  version "5.12.2"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-5.12.2.tgz#e9f43d918d455684280a6015254c5ad96a91f278"
+  integrity sha512-EunVRDkw/eQzgAudJiZuqzEQ20hDezixLRLrdxUMBzavvt5ot3vep7K8swRvXSgj2bKtbOmoHnrRMtYzRjfITQ==
   dependencies:
     fast-redact "^1.4.4"
     fast-safe-stringify "^2.0.6"

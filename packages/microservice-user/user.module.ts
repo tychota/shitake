@@ -6,7 +6,7 @@ import { UserService } from './business/user.service';
 import { UserCommandHandlers } from './business/command/handler';
 import { UserEventHandlers } from './domain/event/handler';
 
-import { EventstoreService } from '@shitake/eventstore/eventstore.service';
+import { EventstoreService } from '@shitake/storage-eventstore/eventstore.service';
 
 @Module({
   imports: [CqrsModule],

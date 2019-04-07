@@ -1,0 +1,16 @@
+{
+  "name": "@shitake/utils-logger",
+  "version": "1.0.0",
+  "description": "cqrs test",
+  "main": "index.ts",
+  "author": "TychoTa",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@nestjs/common": "^6.0.5",
+    "pino": "^5.12.2"
+  },
+  "devDependencies": {
+    "@types/pino": "^5.8.6"
+  }
+}
