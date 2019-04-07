@@ -1,26 +1,18 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+
 import { UserModule } from '@shitake/microservice-user/user.module';
 
-import { ApplicationController } from './controller';
+import { UserGatewayController } from './controllers/user.controller';
 
 import { EventstoreModule } from '@shitake/storage-eventstore/eventstore.module';
+import { RequestIdMiddleware } from './middlewares/reqId.middleware';
 
 @Module({
   imports: [UserModule, EventstoreModule],
-  controllers: [ApplicationController],
+  controllers: [UserGatewayController],
 })
 export class ApplicationModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    // consumer
-    //   .apply(
-    //     pino({
-    //       // Temporary hack
-    //       // TODO: configure nest to use pino logger and then pipe to pretty-print
-    //       prettyPrint: {
-    //         levelFirst: true,
-    //       },
-    //     }),
-    //   )
-    //   .forRoutes('*');
+    consumer.apply(RequestIdMiddleware).forRoutes('*');
   }
 }
