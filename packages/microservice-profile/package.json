@@ -1,5 +1,5 @@
 {
-  "name": "@shitake/microservice-user",
+  "name": "@shitake/microservice-profile",
   "version": "1.0.0",
   "description": "cqrs test",
   "main": "index.ts",
