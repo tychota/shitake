@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package auth;
+
+service Query {}
+
+service Command {
+  rpc Register(AuthCredentialsDto) returns (AccountRef) {}
+}
+
+message AuthCredentialsDto {
+  string email = 1;
+  string clearPassword = 2;
+}
+
+message AccountRef {
+  string id = 1;
+}
+
+message Empty {}
