@@ -10,7 +10,7 @@ service Command {
 
 message AuthCredentialsDto {
   string email = 1;
-  string clearPassword = 2;
+  string password = 2;
 }
 
 message AccountRef {

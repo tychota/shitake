@@ -1,4 +1,6 @@
 import { NestFactory } from '@nestjs/core';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+
 import { NestLogger } from '@shitake/utils-logger/nest.logger';
 
 import { ApplicationModule } from './module';
@@ -15,6 +17,15 @@ export async function bootstrap() {
   app.connectMicroservice(authClientOptions);
 
   await app.startAllMicroservicesAsync();
+
+  const options = new DocumentBuilder()
+    .setTitle('Shitake')
+    .setDescription('A CRQS Test')
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(3001);
 

@@ -13,4 +13,4 @@ import { EventstoreService } from '@shitake/storage-eventstore/eventstore.servic
   controllers: [AuthController],
   providers: [AuthService, ...AuthCommandHandlers, ...AuthEventHandlers, EventstoreService],
 })
-export class ProfileModule {}
+export class AuthModule {}
