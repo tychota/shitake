@@ -8,8 +8,6 @@ import { Stream } from './entity/stream.entity';
 @Injectable()
 export class EventstoreService {
   constructor(
-    @InjectConnection('eventConnection')
-    private readonly connection: Connection,
     @InjectEntityManager('eventConnection')
     private readonly entityManager: EntityManager,
   ) {}
