@@ -11,19 +11,16 @@ import {
   ConflictException,
   HttpException,
 } from '@nestjs/common';
+import { ApiUseTags, ApiCreatedResponse, ApiBadRequestResponse, ApiConflictResponse } from '@nestjs/swagger';
 import { ClientGrpc, Client } from '@nestjs/microservices';
 
 import { authClientOptions } from '@shitake/microservice-auth/infrastructure/';
 import { AuthClearTextCredentialsDto } from '@shitake/microservice-auth/domain/dto';
-import { ApiUseTags, ApiCreatedResponse, ApiBadRequestResponse, ApiConflictResponse } from '@nestjs/swagger';
-
-interface GrpcStatus {
-  code: number;
-  message: string;
-}
+import { GrpcAnswer } from '@shitake/utils-grpc/types';
+import { formatHttpResponse } from '@shitake/utils-grpc/formatHttpResponse';
 
 interface AuthCommand {
-  register(dto: AuthClearTextCredentialsDto): Observable<{ data: unknown; status: GrpcStatus }>;
+  register(dto: AuthClearTextCredentialsDto): Observable<GrpcAnswer>;
 }
 
 @ApiUseTags('auth')
@@ -44,9 +41,7 @@ export class AuthGatewayController implements OnModuleInit {
   @Post('/register')
   @UsePipes(new ValidationPipe({ transform: true }))
   async register(@Body() dto: AuthClearTextCredentialsDto) {
-    const { data, status } = await this.authCommand.register(dto).toPromise();
-    if (status.code === grpc.status.ALREADY_EXISTS) throw new ConflictException(status.message);
-    if (status.code !== grpc.status.OK) throw new HttpException(status.message, 500);
-    return { data };
+    const grpcAnswer = await this.authCommand.register(dto).toPromise();
+    return formatHttpResponse(grpcAnswer);
   }
 }

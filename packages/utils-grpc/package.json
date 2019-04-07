@@ -1,0 +1,14 @@
+{
+  "name": "@shitake/utils-grpc",
+  "version": "1.0.0",
+  "description": "cqrs test",
+  "main": "index.ts",
+  "author": "TychoTa",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@nestjs/common": "^6.0.5",
+    "grpc": "^1.19.0"
+  },
+  "devDependencies": {}
+}
