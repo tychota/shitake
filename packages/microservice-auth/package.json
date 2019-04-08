@@ -8,16 +8,20 @@
   "private": true,
   "dependencies": {
     "@nestjs/common": "^6.0.5",
+    "@nestjs/core": "^6.0.5",
     "@nestjs/cqrs": "^6.0.0",
     "@nestjs/microservices": "^6.0.5",
-    "jsonwebtoken": "^8.5.1",
     "argon2": "^0.21.0",
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1",
+    "jsonwebtoken": "^8.5.1",
+    "reflect-metadata": "0.1.12",
+    "rxjs": "^6.4.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.2",
     "@types/uuid": "^3.4.4",
-    "@types/jsonwebtoken": "^8.3.2"
+    "reflect-metadata": "^0.1.13"
   }
 }
