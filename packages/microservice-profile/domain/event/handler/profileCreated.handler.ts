@@ -6,9 +6,9 @@ import { EventstoreService } from '@shitake/storage-eventstore/eventstore.servic
 
 @EventsHandler(ProfileCreatedEvent)
 export class ProfileCreatedHandler implements IEventHandler<ProfileCreatedEvent> {
-  constructor(private readonly eventstoreService: EventstoreService) {}
+  public constructor(private readonly eventstoreService: EventstoreService) {}
 
-  handle(event: ProfileCreatedEvent) {
+  public handle(event: ProfileCreatedEvent) {
     this.eventstoreService.createEvent(event.uuid, 'User', event.data, 'profileCreated', {});
     // TODO dispatch event to external workers
   }

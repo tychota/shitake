@@ -9,15 +9,15 @@ import { GrpcAlreadyExistException } from '@shitake/utils-grpc/exception';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly commandBus: CommandBus, private readonly queryBus: QueryBus) {}
+  public constructor(private readonly commandBus: CommandBus, private readonly queryBus: QueryBus) {}
 
-  async register(authCredentialsDto: AuthClearTextCredentialsDto) {
+  public async register(authCredentialsDto: AuthClearTextCredentialsDto) {
     await this.assertEmailDoesNotExist(authCredentialsDto.email);
     const id = await this.commandBus.execute(new RegisterAccountCommand(authCredentialsDto));
     return { id };
   }
 
-  async login(authCredentialsDto: AuthClearTextCredentialsDto) {
+  public async login(authCredentialsDto: AuthClearTextCredentialsDto) {
     const id = await this.queryBus.execute<GetUserIdAfterValidationQuery, string>(
       new GetUserIdAfterValidationQuery(authCredentialsDto),
     );
@@ -25,7 +25,7 @@ export class AuthService {
     return { authToken, refreshToken, id };
   }
 
-  async assertEmailDoesNotExist(email: string) {
+  public async assertEmailDoesNotExist(email: string) {
     const emailAlreadyExist = await this.queryBus.execute(new DoesEmailExistQuery(email));
     if (emailAlreadyExist) {
       throw new GrpcAlreadyExistException('Email already exist');

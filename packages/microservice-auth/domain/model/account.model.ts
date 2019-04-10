@@ -4,15 +4,15 @@ import { AuthHashedCredentialsDto } from '@shitake/microservice-auth/domain/dto'
 import { AccountRegistredEvent, LoggedInEvent } from '@shitake/microservice-auth/domain/event';
 
 export class Account extends AggregateRoot {
-  constructor(private readonly uuid: string) {
+  public constructor(private readonly uuid: string) {
     super();
   }
 
-  register(authHashedCredentialDto: AuthHashedCredentialsDto) {
+  public register(authHashedCredentialDto: AuthHashedCredentialsDto) {
     this.apply(new AccountRegistredEvent(this.uuid, authHashedCredentialDto));
   }
 
-  login(refreshToken: string) {
+  public login(refreshToken: string) {
     this.apply(new LoggedInEvent(this.uuid, refreshToken));
   }
 }

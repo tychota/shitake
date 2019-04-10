@@ -1,16 +1,6 @@
 import { Observable } from 'rxjs';
-import grpc from 'grpc';
 
-import {
-  Controller,
-  OnModuleInit,
-  Post,
-  Body,
-  UsePipes,
-  ValidationPipe,
-  ConflictException,
-  HttpException,
-} from '@nestjs/common';
+import { Controller, OnModuleInit, Post, Body, UsePipes, ValidationPipe } from '@nestjs/common';
 import {
   ApiUseTags,
   ApiCreatedResponse,
@@ -25,6 +15,8 @@ import { AuthClearTextCredentialsDto } from '@shitake/microservice-auth/domain/d
 import { GrpcAnswer } from '@shitake/utils-grpc/types';
 import { formatHttpResponse } from '@shitake/utils-grpc/formatHttpResponse';
 
+import { ControllerResponse } from '../types';
+
 interface AuthCommand {
   register(dto: AuthClearTextCredentialsDto): Observable<GrpcAnswer<{ id: string }>>;
   login(dto: AuthClearTextCredentialsDto): Observable<GrpcAnswer>;
@@ -38,7 +30,7 @@ export class AuthGatewayController implements OnModuleInit {
 
   private authCommand!: AuthCommand;
 
-  onModuleInit() {
+  public onModuleInit(): void {
     this.authCommand = this.authClient.getService<AuthCommand>('Command');
   }
 
@@ -47,7 +39,7 @@ export class AuthGatewayController implements OnModuleInit {
   @ApiConflictResponse({ description: 'The email already exist. Try to login instead.' })
   @Post('/register')
   @UsePipes(new ValidationPipe({ transform: true }))
-  async register(@Body() dto: AuthClearTextCredentialsDto) {
+  public async register(@Body() dto: AuthClearTextCredentialsDto): ControllerResponse {
     const grpcAnswer = await this.authCommand.register(dto).toPromise();
     return formatHttpResponse(grpcAnswer);
   }
@@ -57,7 +49,7 @@ export class AuthGatewayController implements OnModuleInit {
   @ApiUnauthorizedResponse({ description: 'The email or the password is incorrect' })
   @Post('/login')
   @UsePipes(new ValidationPipe({ transform: true }))
-  async login(@Body() dto: AuthClearTextCredentialsDto) {
+  public async login(@Body() dto: AuthClearTextCredentialsDto): ControllerResponse {
     const grpcAnswer = await this.authCommand.login(dto).toPromise();
     return formatHttpResponse(grpcAnswer);
   }

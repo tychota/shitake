@@ -14,7 +14,7 @@ import { RequestIdMiddleware } from './middlewares/reqId.middleware';
   controllers: [AuthGatewayController, ProfileGatewayController],
 })
 export class ApplicationModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
+  public configure(consumer: MiddlewareConsumer): void {
     consumer.apply(RequestIdMiddleware).forRoutes('*');
   }
 }

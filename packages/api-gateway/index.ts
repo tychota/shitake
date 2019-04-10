@@ -5,9 +5,9 @@ import { NestLogger } from '@shitake/utils-logger/nest.logger';
 
 import { ApplicationModule } from './module';
 
-declare const module: any;
+declare const module: unknown;
 
-export async function bootstrap() {
+export async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(ApplicationModule, { logger: new NestLogger() });
 
   const { profileClientOptions } = await import('@shitake/microservice-profile/infrastructure');
@@ -29,13 +29,4 @@ export async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   await app.listen(3001);
-
-  if (module.hot) {
-    console.log('aaaa');
-    module.hot.accept(() => console.log('bbbb'));
-    module.hot.dispose(() => {
-      console.log('cccc');
-      app.close();
-    });
-  }
 }

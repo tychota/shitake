@@ -6,9 +6,9 @@ import { EventstoreService } from '@shitake/storage-eventstore/eventstore.servic
 
 @EventsHandler(LoggedInEvent)
 export class LoggedInHandler implements IEventHandler<LoggedInEvent> {
-  constructor(private readonly eventstoreService: EventstoreService) {}
+  public constructor(private readonly eventstoreService: EventstoreService) {}
 
-  handle(event: LoggedInEvent) {
+  public handle(event: LoggedInEvent) {
     this.eventstoreService.createEvent(event.uuid, 'User', { refreshToken: event.refreshToken }, 'loggedIn', {});
     // TODO dispatch event to external workers
   }

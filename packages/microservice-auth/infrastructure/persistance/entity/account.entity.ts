@@ -3,18 +3,18 @@ import { Entity, PrimaryColumn, Unique, Column, Index, CreateDateColumn, UpdateD
 @Entity({ name: 'account' })
 export class AccountEntity {
   @PrimaryColumn('uuid', { nullable: false })
-  id!: string;
+  public id!: string;
 
   @Index({ unique: true })
   @Column('text', { unique: true, nullable: false })
-  email!: string;
+  public email!: string;
 
   @Column('text', { nullable: false })
-  hashedPassword!: string;
+  public hashedPassword!: string;
 
   @CreateDateColumn()
-  createdAt!: Date;
+  public createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt!: Date;
+  public updatedAt!: Date;
 }

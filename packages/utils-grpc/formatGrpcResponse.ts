@@ -7,7 +7,7 @@ export const formatGrpcResponse = async <P extends unknown[], R>(
   service: (...args: P) => Promise<R>,
   args: P,
 ): Promise<GrpcAnswer<R>> => {
-  let data: R = {} as R;
+  let data: R = ({} as unknown) as R;
   let status: GrpcStatus;
   try {
     data = await service(...args);

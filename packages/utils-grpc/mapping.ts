@@ -22,7 +22,7 @@ const createHttpExceptionBody = (message: object | string, error?: string, statu
 
 const createHttpException = (status: number, defaultError: string = '') => {
   class CustomHttpException extends HttpException {
-    constructor(message?: string | object | any, error = defaultError) {
+    public constructor(message?: string | object | any, error = defaultError) {
       super(createHttpExceptionBody(message, error, status), status);
     }
   }

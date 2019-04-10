@@ -6,9 +6,9 @@ import { Profile } from '@shitake/microservice-profile/domain/model';
 
 @CommandHandler(CreateProfileCommand)
 export class CreateProfileHandler implements ICommandHandler<CreateProfileCommand> {
-  constructor(private readonly publisher: EventPublisher) {}
+  public constructor(private readonly publisher: EventPublisher) {}
 
-  async execute(command: CreateProfileCommand) {
+  public async execute(command: CreateProfileCommand) {
     const { userDto } = command;
 
     const user = this.publisher.mergeObjectContext(new Profile(uuid()));

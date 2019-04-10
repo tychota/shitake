@@ -8,16 +8,16 @@ import { formatGrpcResponse } from '@shitake/utils-grpc/formatGrpcResponse';
 
 @Controller()
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  public constructor(private readonly authService: AuthService) {}
 
   @GrpcMethod('Command')
-  async register(authCredentialsDto: AuthClearTextCredentialsDto) {
+  public async register(authCredentialsDto: AuthClearTextCredentialsDto) {
     const serviceFn = this.authService.register.bind(this.authService);
     return formatGrpcResponse(serviceFn, [authCredentialsDto]);
   }
 
   @GrpcMethod('Command')
-  async login(authCredentialsDto: AuthClearTextCredentialsDto) {
+  public async login(authCredentialsDto: AuthClearTextCredentialsDto) {
     const serviceFn = this.authService.login.bind(this.authService);
     return formatGrpcResponse(serviceFn, [authCredentialsDto]);
   }

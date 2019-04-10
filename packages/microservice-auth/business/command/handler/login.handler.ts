@@ -12,13 +12,13 @@ import { AccountEntity } from '@shitake/microservice-auth/infrastructure';
 
 @CommandHandler(LoginCommand)
 export class LoginCommandHandler implements ICommandHandler<LoginCommand> {
-  constructor(
+  public constructor(
     private readonly publisher: EventPublisher,
     @InjectEntityManager('accountConnection')
     private readonly entityManager: EntityManager,
   ) {}
 
-  async execute(command: LoginCommand) {
+  public async execute(command: LoginCommand) {
     const { accountId } = command;
 
     const accountRepo = this.entityManager.getRepository(AccountEntity);

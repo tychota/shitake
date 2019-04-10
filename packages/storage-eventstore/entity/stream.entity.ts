@@ -3,11 +3,11 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, Unique, OneTo
 @Entity()
 export class Stream {
   @PrimaryGeneratedColumn('uuid')
-  streamId!: string;
+  public streamId!: string;
 
   @Column('int')
-  version!: number;
+  public version!: number;
 
   @Column('text')
-  type!: string;
+  public type!: string;
 }

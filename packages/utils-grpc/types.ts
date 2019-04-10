@@ -3,7 +3,7 @@ import grpc from 'grpc';
 export interface GrpcStatus {
   code: grpc.status;
   message?: string;
-  details?: any[];
+  details?: unknown[];
 }
 
 export interface GrpcAnswer<T extends unknown = unknown> {

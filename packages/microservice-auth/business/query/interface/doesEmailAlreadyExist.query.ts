@@ -1,3 +1,3 @@
 export class DoesEmailExistQuery {
-  constructor(public readonly email: string) {}
+  public constructor(public readonly email: string) {}
 }

@@ -3,15 +3,15 @@ import { Entity, PrimaryColumn, Unique, Column, Index, CreateDateColumn, UpdateD
 @Entity({ name: 'refreshToken' })
 export class RefreshTokenEntity {
   @PrimaryColumn('uuid', { nullable: false })
-  id!: string;
+  public id!: string;
 
   @Index({ unique: true })
   @Column('text', { unique: true, nullable: false })
-  refreshToken!: string;
+  public refreshToken!: string;
 
   @CreateDateColumn()
-  createdAt!: Date;
+  public createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt!: Date;
+  public updatedAt!: Date;
 }

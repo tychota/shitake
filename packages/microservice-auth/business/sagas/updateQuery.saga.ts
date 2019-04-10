@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Saga, ICommand, ofType } from '@nestjs/cqrs';
+import { Saga, ofType } from '@nestjs/cqrs';
 import { InjectEntityManager } from '@nestjs/typeorm';
 import { EntityManager } from 'typeorm';
 
@@ -12,13 +12,13 @@ import { RefreshTokenEntity } from '../../infrastructure/persistance/entity/refr
 
 @Injectable()
 export class AuthSagas {
-  constructor(
+  public constructor(
     @InjectEntityManager('accountConnection')
     private readonly entityManager: EntityManager,
   ) {}
 
   @Saga()
-  accountRegistred = (events$: Observable<any>): Observable<void> => {
+  public accountRegistred = (events$: Observable<any>): Observable<void> => {
     return events$.pipe(
       ofType(AccountRegistredEvent),
       map(event => {
@@ -29,7 +29,7 @@ export class AuthSagas {
   };
 
   @Saga()
-  loggedIn = (events$: Observable<any>): Observable<void> => {
+  public loggedIn = (events$: Observable<any>): Observable<void> => {
     return events$.pipe(
       ofType(LoggedInEvent),
       map(event => {

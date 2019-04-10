@@ -7,12 +7,18 @@ import { Stream } from './entity/stream.entity';
 
 @Injectable()
 export class EventstoreService {
-  constructor(
+  public constructor(
     @InjectEntityManager('eventConnection')
     private readonly entityManager: EntityManager,
   ) {}
 
-  async createEvent<D, M>(streamId: string, streamType: string, eventData: D, eventType: string, eventMetadata: M) {
+  public async createEvent<D, M>(
+    streamId: string,
+    streamType: string,
+    eventData: D,
+    eventType: string,
+    eventMetadata: M,
+  ) {
     const streamRepo = this.entityManager.getRepository<Stream>('stream');
     let stream;
     try {

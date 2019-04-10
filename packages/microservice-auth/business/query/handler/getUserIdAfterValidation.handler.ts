@@ -11,12 +11,12 @@ import { GrpcPermissionDeniedException } from '@shitake//utils-grpc/exception';
 
 @QueryHandler(GetUserIdAfterValidationQuery)
 export class GetUserIdAfterValidationHandler implements IQueryHandler<GetUserIdAfterValidationQuery> {
-  constructor(
+  public constructor(
     @InjectEntityManager('accountConnection')
     private readonly entityManager: EntityManager,
   ) {}
 
-  async execute(query: GetUserIdAfterValidationQuery) {
+  public async execute(query: GetUserIdAfterValidationQuery) {
     const accountRepo = this.entityManager.getRepository(AccountEntity);
 
     const accountThatMatchedEmail = await accountRepo.findOne({ email: query.authCredentialsDto.email });

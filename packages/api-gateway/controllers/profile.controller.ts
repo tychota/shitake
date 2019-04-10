@@ -13,9 +13,13 @@ import {
   ApiUnauthorizedResponse,
   ApiForbiddenResponse,
 } from '@nestjs/swagger';
+import { formatHttpResponse } from '@shitake/utils-grpc/formatHttpResponse';
+import { GrpcAnswer } from '@shitake/utils-grpc/types';
+
+import { ControllerResponse } from '../types';
 
 interface ProfileCommand {
-  createProfile(dto: ProfileDto): Observable<void>;
+  createProfile(dto: ProfileDto): Observable<GrpcAnswer>;
 }
 
 @ApiUseTags('profile')
@@ -27,7 +31,7 @@ export class ProfileGatewayController implements OnModuleInit {
 
   private profileCommand!: ProfileCommand;
 
-  onModuleInit() {
+  public onModuleInit(): void {
     this.profileCommand = this.profileClient.getService<ProfileCommand>('Command');
   }
 
@@ -38,7 +42,8 @@ export class ProfileGatewayController implements OnModuleInit {
   @ApiBearerAuth()
   @Post()
   @UsePipes(new ValidationPipe({ transform: true }))
-  async createProfile(@Body() dto: ProfileDto) {
-    return this.profileCommand.createProfile(dto);
+  public async createProfile(@Body() dto: ProfileDto): ControllerResponse {
+    const grpcAnswer = await this.profileCommand.createProfile(dto).toPromise();
+    return formatHttpResponse(grpcAnswer);
   }
 }

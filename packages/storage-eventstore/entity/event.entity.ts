@@ -5,24 +5,24 @@ import { Stream } from './stream.entity';
 @Unique(['streamId', 'version'])
 export class Event {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
-  sequenceNum!: number;
+  public sequenceNum!: number;
 
   @ManyToOne(type => Stream)
   @JoinColumn({ name: 'streamId' })
-  streamId!: string;
+  public streamId!: string;
 
   @Column('int')
-  version!: number;
+  public version!: number;
 
   @Column('jsonb')
-  data!: unknown;
+  public data!: unknown;
 
   @Column('text')
-  type!: string;
+  public type!: string;
 
   @Column('jsonb')
-  meta!: unknown;
+  public meta!: unknown;
 
   @CreateDateColumn()
-  logDate!: number;
+  public logDate!: number;
 }

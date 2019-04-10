@@ -1,3 +1,3 @@
 export class LoginCommand {
-  constructor(public readonly accountId: string) {}
+  public constructor(public readonly accountId: string) {}
 }

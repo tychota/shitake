@@ -6,11 +6,11 @@ export class ProfileDto {
   @IsDefined()
   @IsString()
   @Length(1, 50)
-  readonly firstName!: string;
+  public readonly firstName!: string;
 
   @ApiModelProperty()
   @IsDefined()
   @IsString()
   @Length(1, 50)
-  readonly lastName!: string;
+  public readonly lastName!: string;
 }

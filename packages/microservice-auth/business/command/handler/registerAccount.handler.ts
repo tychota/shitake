@@ -8,9 +8,9 @@ import { Account } from '@shitake/microservice-auth/domain/model';
 
 @CommandHandler(RegisterAccountCommand)
 export class RegisterAccountHandler implements ICommandHandler<RegisterAccountCommand> {
-  constructor(private readonly publisher: EventPublisher) {}
+  public constructor(private readonly publisher: EventPublisher) {}
 
-  async execute(command: RegisterAccountCommand) {
+  public async execute(command: RegisterAccountCommand) {
     const {
       authCredentialsDto: { email, password },
     } = command;

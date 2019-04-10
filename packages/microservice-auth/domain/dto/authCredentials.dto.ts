@@ -5,20 +5,20 @@ export class AuthClearTextCredentialsDto {
   @ApiModelProperty()
   @IsDefined()
   @IsEmail()
-  readonly email!: string;
+  public readonly email!: string;
 
   @ApiModelProperty()
   @IsDefined()
   @IsString()
-  readonly password!: string;
+  public readonly password!: string;
 }
 
 export class AuthHashedCredentialsDto {
   @IsDefined()
   @IsEmail()
-  readonly email!: string;
+  public readonly email!: string;
 
   @IsDefined()
   @IsString()
-  readonly hashedPassword!: string;
+  public readonly hashedPassword!: string;
 }

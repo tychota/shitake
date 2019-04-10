@@ -7,12 +7,12 @@ import { DoesEmailExistQuery } from '@shitake/microservice-auth/business/query';
 
 @QueryHandler(DoesEmailExistQuery)
 export class DoesEmailExistHandler implements IQueryHandler<DoesEmailExistQuery> {
-  constructor(
+  public constructor(
     @InjectEntityManager('accountConnection')
     private readonly entityManager: EntityManager,
   ) {}
 
-  async execute(query: DoesEmailExistQuery) {
+  public async execute(query: DoesEmailExistQuery) {
     const accountRepo = this.entityManager.getRepository(AccountEntity);
     return (await accountRepo.count({ email: query.email })) > 0;
   }
