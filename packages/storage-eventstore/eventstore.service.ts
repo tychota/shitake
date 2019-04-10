@@ -17,7 +17,7 @@ export class EventstoreService {
     let stream;
     try {
       stream = await streamRepo.findOneOrFail(streamId);
-    } catch {
+    } catch (e) {
       stream = await streamRepo.save({ streamId, version: 0, type: streamType });
     }
 

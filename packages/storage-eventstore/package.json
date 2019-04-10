@@ -11,7 +11,7 @@
     "@nestjs/core": "^6.0.5",
     "@nestjs/typeorm": "^6.0.0",
     "pg": "^7.9.0",
-    "reflect-metadata": "^0.1.12",
+    "reflect-metadata": "0.1.12",
     "rxjs": "^6.4.0",
     "typeorm": "^0.2.16"
   }

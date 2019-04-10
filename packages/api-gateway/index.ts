@@ -5,13 +5,13 @@ import { NestLogger } from '@shitake/utils-logger/nest.logger';
 
 import { ApplicationModule } from './module';
 
-import { profileClientOptions } from '@shitake/microservice-profile/infrastructure';
-import { authClientOptions } from '@shitake/microservice-auth/infrastructure';
-
 declare const module: any;
 
 export async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule, { logger: new NestLogger() });
+
+  const { profileClientOptions } = await import('@shitake/microservice-profile/infrastructure');
+  const { authClientOptions } = await import('@shitake/microservice-auth/infrastructure');
 
   app.connectMicroservice(profileClientOptions);
   app.connectMicroservice(authClientOptions);
@@ -31,7 +31,11 @@ export async function bootstrap() {
   await app.listen(3001);
 
   if (module.hot) {
-    module.hot.accept();
-    module.hot.dispose(() => app.close());
+    console.log('aaaa');
+    module.hot.accept(() => console.log('bbbb'));
+    module.hot.dispose(() => {
+      console.log('cccc');
+      app.close();
+    });
   }
 }
