@@ -1,5 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 
 import { NestLogger } from '@shitake/utils-logger/nest.logger';
 
@@ -16,7 +18,15 @@ export async function bootstrap(): Promise<void> {
   app.connectMicroservice(profileClientOptions);
   app.connectMicroservice(authClientOptions);
 
-  await app.startAllMicroservicesAsync();
+  app.startAllMicroservices();
+
+  app.use(helmet());
+  app.use(
+    new rateLimit({
+      windowMs: 0.5 * 60 * 1000, // 30sec
+      max: 100, // limit each IP to 300 requests per windowMs
+    }),
+  );
 
   const options = new DocumentBuilder()
     .setTitle('Shitake')
