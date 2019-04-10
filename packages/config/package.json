@@ -1,0 +1,19 @@
+{
+  "name": "@shitake/config",
+  "version": "1.0.0",
+  "description": "cqrs test",
+  "main": "index.ts",
+  "author": "TychoTa",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@nestjs/common": "^6.0.5",
+    "@nestjs/core": "^6.0.5",
+    "dotenv": "^7.0.0",
+    "joi": "^14.3.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/joi": "^14.3.2"
+  }
+}
