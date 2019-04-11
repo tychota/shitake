@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@nestjs/common": "^6.0.5",
     "pino": "^5.12.2"
   },
   "devDependencies": {

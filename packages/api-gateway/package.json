@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@grpc/proto-loader": "^0.4.0",
     "@types/express-rate-limit": "^3.3.0",
     "@types/helmet": "^0.0.43",
     "@types/pino-http": "^4.0.2",
@@ -15,17 +14,10 @@
     "pino-pretty": "^2.6.0"
   },
   "dependencies": {
-    "@nestjs/common": "^6.0.5",
-    "@nestjs/core": "^6.0.5",
-    "@nestjs/microservices": "^6.0.5",
-    "@nestjs/platform-express": "^6.0.5",
-    "@nestjs/swagger": "^3.0.2",
     "@types/express": "^4.16.1",
     "express-rate-limit": "^3.4.0",
     "grpc": "^1.19.0",
     "helmet": "^3.16.0",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.4.0",
     "swagger-ui-express": "^4.0.2"
   }
 }
