@@ -15,7 +15,7 @@
     "@nestjs/platform-express": "^6.1.0",
     "@nestjs/swagger": "^3.0.2",
     "@nestjs/typeorm": "^6.0.0",
-    "grpc": "^1.19.0",
+    "grpc": "^1.24.9",
     "reflect-metadata": "0.1.12",
     "rxjs": "^6.4.0",
     "pg": "^7.9.0",
