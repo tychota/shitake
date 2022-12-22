@@ -10,7 +10,7 @@
     "argon2": "^0.21.0",
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
